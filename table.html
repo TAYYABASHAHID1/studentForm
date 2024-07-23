@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="btn" style="position: absolute; top: 40px;" onclick="window.location.href='index.html' ">← BACK </button>
+    <div id="table"></div>
+
+    <script>
+        var header = document.getElementById("table");
+        header.innerHTML = `
+        <table>
+            <thead>
+                <tr>
+                    <th>S.#</th>
+                    <th>Name</th>
+                    <th>Father Name</th>
+                    <th>Phone Number</th>
+                    <th>Date of Birth</th>
+                    <th>Age</th>
+                    <th>Roll Number</th>
+                    <th onclick=del()>Delete</th>
+                    <th >Edit</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        `;
+
+        var studentData = JSON.parse(localStorage.getItem("studentData"));
+        
+            var table = document.querySelector("table tbody");
+            var serial= table.rows.length + 1;
+            var rollNumber = Math.floor(Math.random()* 900 )+100;
+
+            var row = table.insertRow();
+            row.innerHTML = `
+                <td>${serial}</td>
+                <td>${studentData.name.toUpperCase()}</td>
+                <td>${studentData.fatherName.toUpperCase()}</td>
+                <td>${studentData.phoneNumber}</td>
+                <td>${studentData.dob}</td>
+                <td>${studentData.age}</td>
+                <td>${rollNumber}</td>
+                <td onclick=del()> Delete</td>
+                <td onclick=edit()>Edit</td>
+            `;
+        
+function del(){
+     document.childNodes[1].childNodes[2].childNodes[3].childNodes[1].childNodes[3].childNodes[0].remove()
+
+
+}
+function edit(){
+
+}
+
+
+
+
+      
+    </script>
+</body>
+</html>

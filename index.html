@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <button id="btn">Add Student</button>
+        <div id="container"></div>
+    </div>
+   
+    <script>
+        document.querySelector("#btn").addEventListener("click", function() {
+            var div = document.getElementById("container");
+            div.innerHTML = `
+            <div class="outer">
+                <h1>Information</h1>
+                <p>Enter Name
+                <input class="in" type="text" placeholder="Enter Name" id="name"/></p>
+                <p>Enter Father Name
+                <input class="in" type="text" placeholder="Enter Father Name" id="fatherName"/></p>
+                <p>Enter Phone Number
+                <input class="in" type="tel" placeholder="Enter Phone Number" id="phoneNumber"/></p>
+                <p>Enter Date of Birth
+                <input class="in" type="date" placeholder="Enter Date of Birth" id="dob"/></p>
+                <p>Age
+                <input class="in" type="number" placeholder="Enter Age" id="age"/></p>
+                <input type="submit" value="Submit" onclick="submitForm()" id="bt" />
+            </div>
+            `;
+        });
+
+        function submitForm() {
+            var name = document.getElementById("name").value;
+            var fatherName = document.getElementById("fatherName").value;
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            var dob = document.getElementById("dob").value;
+            var age = document.getElementById("age").value;
+
+            var studentData = {
+                name: name,
+                fatherName: fatherName,
+                phoneNumber: phoneNumber,
+                dob: dob,
+                age: age
+            };
+
+            localStorage.setItem("studentData", JSON.stringify(studentData));
+            window.location.href = "table.html";
+        }
+    </script>
+</body>
+</html>
